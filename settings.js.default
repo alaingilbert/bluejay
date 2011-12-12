@@ -1,0 +1,21 @@
+settings = {
+   DEBUG:            false,
+   SALT:             'a9d3j7fsf&dfsof@diqda2uewqoekqwa',
+
+   POSTGRES_USER:    'postgres',
+   POSTGRES_PASW:    '',
+   POSTGRES_DB:      '',
+
+   // Memcached settings
+   MEMCACHED_HOST:   '127.0.0.1',
+   MEMCACHED_PORT:   11211,
+
+   AUTH:   '',
+   USERID: '',
+   ROOMID: ''
+}
+
+
+for (var key in settings) {
+   exports[key] = settings[key];
+}

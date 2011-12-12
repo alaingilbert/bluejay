@@ -5,7 +5,8 @@ var express    = require('express')
   , zmq        = require('zmq')
   , ZMQ_STRING = 'ipc://127.0.0.1:60000'
   , PORT       = 8080
-  , HOST       = '127.0.0.1';
+  , HOST       = '127.0.0.1'
+  , settings   = require('./settings');
 
 
 var pub = zmq.socket('pub');
@@ -14,14 +15,10 @@ pub.connect(ZMQ_STRING);
 
 //--- Bots ---
 
-var AUTH   = 'auth+live+be5c492052d1729ebed867ca43d5978d76ebf865'
-  , USERID = '4e685aac14169c225510e99d'
-  , ROOMID = '4df8319e9021683a2f000a55';
-
-var bot = new Bot(AUTH, USERID, ROOMID);
+var bot = new Bot(settings.AUTH, settings.USERID, settings.ROOMID);
 
 bot.on('update_votes', function (data) {
-   pub.send('/'+ROOMID+data);
+   pub.send('/' + ROOMID + '/update_votes/' + JSON.stringify(data));
 });
 
 
@@ -44,7 +41,10 @@ app.get('/events', function (req, res) {
                       });
 
    var callback = function (data) {
-      res.write('data: ' + data.toString() + '\n\n');
+      var str = data.toString();
+      var d = str.substr(str.indexOf('{')).replace('\n', '');
+      console.log('> ' + d);
+      res.write('data: ' + d + '\n\n');
    };
 
    var sub = zmq.socket('sub');
@@ -54,6 +54,7 @@ app.get('/events', function (req, res) {
 
    res.socket.on('close', function () {
       sub.close();
+      res.end();
    });
 });
 
