@@ -1,0 +1,119 @@
+!!! 5
+html
+   head
+      link(rel='stylesheet', href='/css/reset.css')
+      link(rel='stylesheet', href='/css/style.css')
+      link(rel='stylesheet', href='/css/room.css')
+      script(src='/js/right.js')
+      script(src='/js/room.js')
+      script
+         var roomId = '#{room.id}';
+         initSse(roomId);
+
+   body
+      #fb-root
+
+      #head
+         ul
+            li
+               a(href='#') Home
+            li
+               a(href='#') API
+            li
+               a(href='#') Contact
+
+      #songs
+         .scrollbar
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+         .song
+            img(src='/img/m.jpeg', width='100')
+
+
+      #page
+         h1 #{room.name}
+         //#{room.id}
+
+         #song
+            .song
+               .img
+                  img(src='/img/m.jpeg')
+               .infos
+                  label Song name:
+                  span Bassive Antidote (Sean Johnson Bootleg)
+                  br
+                  label Album:
+                  span Album name
+                  br
+                  label Artist:
+                  span Swedish House Mafia & Knife Party vs Felguk
+                  br
+                  label Length:
+                  span 4m 38
+                  br
+                  label Current Dj:
+                  span .Mnml_Pixels
+                  br
+                  label Appreciation:
+                  #votesup
+                     div 12
+                  #votesdown
+                     div 13
+                  br
+
+
+      #stats
+         canvas(id='awesomes', width='300', height='100')
+         br
+         canvas(id='awesomes', width='300', height='100')
+         #ads
+
+
+      #foot
+         p Created by 
+            a(href="https://twitter.com/#!/alain_gilbert", target='_blank') @alain_gilbert
+
+
+      //block foot
+      //   #footer
+      //      .center
+      //         .left
+      //            span
+      //               | Follow
+      //               a(href='http://twitter.com/#!/alain_gilbert', target='_blank') @alain_gilbert
+      //               |  on twitter
+      //            br
+      //            a(href='/terms/') Terms of Service / Privacy Policy
+      //            br

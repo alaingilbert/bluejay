@@ -8,10 +8,25 @@ html
       block scripts
 
    body
-      block content
-         p caliss
+      #fb-root
+
+      block share
+
+      block ads
+
+      block head
+
+      #page
+         block content
+
       block foot
          #footer
-            p
-               | Copyright
-               a(href='http://twitter.com/#!/alain_gilbert', target='_blank') @alain_gilbert
+            .center
+               .left
+                  span
+                     | Follow
+                     a(href='http://twitter.com/#!/alain_gilbert', target='_blank') @alain_gilbert
+                     |  on twitter
+                  br
+                  a(href='/terms/') Terms of Service / Privacy Policy
+                  br
