@@ -27,7 +27,7 @@ function switchSong(data) {
    new Element('span').text(currentSong.metadata.artist).insertTo(infos);
    new Element('br').insertTo(infos);
    new Element('label').text('Current DJ:').insertTo(infos);
-   new Element('span').text(currentSong.metadata.artist).insertTo(infos);
+   new Element('span').text(room.metadata.current_dj).insertTo(infos);
    new Element('br').insertTo(infos);
    new Element('label').text('Appreciation:').insertTo(infos);
    new Element('div').set({ id: 'votesup' }).text(''+data.room.metadata.upvotes).insertTo(infos);
@@ -88,24 +88,44 @@ setTimeout(function () {
 
 
 $(document).onReady(function () {
-   var scroll = $$('#songs .scrollbar')[0];
    $('songs').on({ 'mousewheel': function (evt) {
          this._.scrollTop -= evt._.wheelDeltaY;
          var h = (this._.clientHeight / this._.scrollHeight) * this._.clientHeight;
          var t = ((this._.scrollTop) / this._.scrollHeight) * this._.clientHeight + this._.scrollTop;
          if (t+h > this._.scrollHeight-1) { t = this._.scrollHeight-h-1; }
-         scroll.setStyle('height', h+'px');
-         scroll.setStyle({ 'top': t+'px' });
+         $$('#songs .scrollbar')[0].setStyle('height', h+'px');
+         $$('#songs .scrollbar')[0].setStyle({ 'top': t+'px' });
       }
     , 'mouseenter': function (evt) {
          if (this._.scrollHeight > this._.clientHeight) {
             var h = (this._.clientHeight / this._.scrollHeight) * this._.clientHeight;
-            scroll.setStyle('height', h+'px');
-            scroll.setStyle('display', 'block');
+            $$('#songs .scrollbar')[0].setStyle('height', h+'px');
+            $$('#songs .scrollbar')[0].setStyle('display', 'block');
          }
       }
     , 'mouseleave': function (evt) {
-         scroll.setStyle('display', 'none');
+         $$('#songs .scrollbar')[0].setStyle('display', 'none');
+      }
+   });
+
+
+   $('page').on({ 'mousewheel': function (evt) {
+         this._.scrollTop -= evt._.wheelDeltaY;
+         var h = (this._.clientHeight / this._.scrollHeight) * this._.clientHeight;
+         var t = ((this._.scrollTop) / this._.scrollHeight) * this._.clientHeight + this._.scrollTop;
+         if (t+h > this._.scrollHeight-1) { t = this._.scrollHeight-h-1; }
+         $$('#page .scrollbar')[0].setStyle('height', h+'px');
+         $$('#page .scrollbar')[0].setStyle({ 'top': t+'px' });
+      }
+    , 'mouseenter': function (evt) {
+         if (this._.scrollHeight > this._.clientHeight) {
+            var h = (this._.clientHeight / this._.scrollHeight) * this._.clientHeight;
+            $$('#page .scrollbar')[0].setStyle('height', h+'px');
+            $$('#page .scrollbar')[0].setStyle('display', 'block');
+         }
+      }
+    , 'mouseleave': function (evt) {
+         $$('#page .scrollbar')[0].setStyle('display', 'none');
       }
    });
 });
